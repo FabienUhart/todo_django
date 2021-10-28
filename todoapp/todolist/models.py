@@ -12,11 +12,12 @@ STATE_CHOICES = [
 class Todo(models.Model):
     """  BASE Model todolist"""
     title = models.CharField(max_length=250)
-    details = models.TextField()
+    details = models.TextField(default=None, null=True)
     state = models.CharField(
         max_length=5,
         choices=STATE_CHOICES,
         default=STATE_CHOICES[0],
     )
+    state_order = models.IntegerField(default=0)
     modified = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(default=datetime.now().strftime("%m/%d/%Y %H:%M:%S"))
+    created = models.DateTimeField(default=datetime.now)
