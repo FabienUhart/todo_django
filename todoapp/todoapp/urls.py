@@ -21,6 +21,8 @@ from django.views.generic.base import RedirectView
 from django.conf.urls import url
 
 urlpatterns = [
+    url(r'', RedirectView.as_view(url=staticfiles_storage.url('/home/index.html'), permanent=False),
+        name="index"),
     path('admin/', admin.site.urls),
     url(r'^home', RedirectView.as_view(url=staticfiles_storage.url('/home/index.html'), permanent=False),
         name="index"),
