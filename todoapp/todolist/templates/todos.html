@@ -1,0 +1,12 @@
+<div>
+    {% for todo in todos %}
+    <div class="{% if todo.state == 'RUN' %} green {% elif todo.state == 'DONE' %} orange {% else %} red {% endif %}">
+    <!-- todo add checkbox -->
+    <!-- todo add endpoint for modification of title or details -->
+        <H1>{{ todo.title}}</H1>
+        <p>{{ todo.state}}</p>
+        <p>{{ todo.state_order}}</p>
+        <p>{{ todo.created |time}}</p>
+    </div>
+    {% endfor %}
+</div>
