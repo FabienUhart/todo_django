@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import timezone, datetime, timedelta
+from django.utils import timezone
 
 # Create your models here.
 STATE_CHOICES = [
@@ -20,4 +20,4 @@ class Todo(models.Model):
     )
     state_order = models.IntegerField(default=0)
     modified = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(default=datetime.now)
+    created = models.DateTimeField(default=timezone.now)
