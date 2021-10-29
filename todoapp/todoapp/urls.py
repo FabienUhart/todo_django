@@ -22,9 +22,11 @@ from todolist import views
 
 urlpatterns = [
     path('', views.index),
-    url(r'^loadtodos/', views.loadtodos),
+    url(r'^loadtodos/', views.loadTodos),
     url(r'^addtodo/', views.addTodo),
+    url(r'^updatetodo/', views.updateTodo),
     path('admin/', admin.site.urls),
     url(r'^home', RedirectView.as_view(url=staticfiles_storage.url('/home/index.html'), permanent=False),
         name="index"),
+    path('todo/<str:id>/', views.getTodo),
 ]

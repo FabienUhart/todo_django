@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    {% load static %}
+    <title>Todo</title>
+</head>
+<body>
+<button class="redirect" data-url="/home"> HOME</button>
+<div>
+    <h1>Title {{ todo.id }} :</h1>
+    <p><input type="text" id="title" name="title" class="inputTodo" placeholder="{{ todo.title}}" minlength="250"
+              maxlength="250"></p>
+</div>
+<div>
+    <p>Details :<input type="text" id="details" name="details" class="inputTodo" placeholder="{% if todo.details == 'None' %} NO details {% else %} {{ todo.details}} {% endif %}"
+                       minlength="250" maxlength="250"></p>
+    <p>State: {{ todo.state}}</p>
+    <select class="selectState select-toggle" multiple="multiple">
+        <option value="RUN" {% if todo.state == 'RUN' %} selected {% endif %}> RUNNING</option>
+        <option value="DONE" {% if todo.state == 'DONE' %} selected {% endif %}> DONE</option>
+        <option value="INTER" {% if todo.state == 'INTER' %} selected {% endif %}> INTERRUPTED</option>
+    </select>
+    <p>Created: {{ todo.modified }}</p>
+    <p>Created: {{ todo.created }}</p>
+</div>
+<div>
+    <button class="updateButton">Update</button>
+</div>
+
+<script src="{% static 'home/extern/jquery-3.5.1.js' %}"></script>
+<script src="{% static 'home/js/index.js' %}"></script>
+<script src="{% static 'home/js/todo.js' %}"></script>
+<script>
+    loadTodoElements({{ todo.id }},"{{todo.title}}", "{{todo.details}}", "{{todo.state}}");
+</script>
+</body>
+</html>

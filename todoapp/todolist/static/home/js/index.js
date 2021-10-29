@@ -3,6 +3,7 @@ let urls = {
     'deconnexion': '/deconnexion/',
     'loadtodos': '/loadtodos/',
     'addtodo': '/addtodo/',
+    'updatetodo': '/updatetodo/',
 }
 let csrf = {
     key: 'csrftoken',
@@ -18,15 +19,15 @@ $(document).ready(function () {
     $(idClass.inputAddTodo).change(function () {
         let $this = $(this);
         if ($this.val() !== '') {
-            console.log($this.val());
             valNewTodo = $this.val();
         }
     });
     $(idClass.getValNewTodo).click(function () {
-        console.log(valNewTodo);
         addNewTodo();
     });
-    console.log('Ma TODO');
+    $('.redirect').click(function () {
+        redirection($(this).attr('data-url'));
+    });
     getcookie();
     get_todos();
 })
@@ -68,7 +69,6 @@ function search_key(key, data) {
 }
 
 function addNewTodo() {
-    console.log('On va sauvegarder tout cela');
     let data = {
         details: valNewTodo
     };
@@ -85,5 +85,8 @@ function addNewTodo() {
             console.log('msg');
         },
     });
+}
 
+function redirection(url) {
+    document.location.href = url;
 }

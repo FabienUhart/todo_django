@@ -1,12 +1,23 @@
+{% load static %}
 <div>
     {% for todo in todos %}
     <div class="{% if todo.state == 'RUN' %} green {% elif todo.state == 'DONE' %} orange {% else %} red {% endif %}">
-    <!-- todo add checkbox -->
-    <!-- todo add endpoint for modification of title or details -->
-        <H1>{{ todo.title}}</H1>
-        <p>{{ todo.state}}</p>
-        <p>{{ todo.state_order}}</p>
-        <p>{{ todo.created |time}}</p>
+        <!-- todo add checkbox -->
+        <!-- todo add endpoint for modification of title or details -->
+        <h5> {{ todo.title}}  {{ todo.id}}
+            <button class="redirect" data-url="/todo/{{todo.id}}">Changement</button>
+        </h5>
+        {% if todo.details %}
+        <p>Details: <strong> {{ todo.details}} </strong></p>
+        {% endif%}
+        <p>Modified: {{ todo.modified }}</p>
+        <p>Created: {{ todo.created }}</p>
     </div>
     {% endfor %}
 </div>
+<script>
+    $('.redirect').click(function () {
+        redirection($(this).attr('data-url'));
+    });
+</script>
+
