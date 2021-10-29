@@ -16,7 +16,7 @@ class Todo(models.Model):
     state = models.CharField(
         max_length=5,
         choices=STATE_CHOICES,
-        default=STATE_CHOICES[0],
+        default=STATE_CHOICES[0][0],
     )
     state_order = models.IntegerField(default=0)
     modified = models.DateTimeField(auto_now=True)

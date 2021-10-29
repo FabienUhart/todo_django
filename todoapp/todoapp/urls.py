@@ -23,6 +23,7 @@ from todolist import views
 urlpatterns = [
     path('', views.index),
     url(r'^loadtodos/', views.loadtodos),
+    url(r'^addtodo/', views.addTodo),
     path('admin/', admin.site.urls),
     url(r'^home', RedirectView.as_view(url=staticfiles_storage.url('/home/index.html'), permanent=False),
         name="index"),
